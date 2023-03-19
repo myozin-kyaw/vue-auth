@@ -1,0 +1,263 @@
+<template>
+  <link
+    rel="stylesheet"
+    href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+  />
+
+  <section class="bg-blueGray-50">
+    <div class="w-full lg:w-4/12 px-4 mx-auto pt-6">
+      <div
+        class="
+          relative
+          flex flex-col
+          min-w-0
+          break-words
+          w-full
+          mb-6
+          shadow-lg
+          rounded-lg
+          bg-blueGray-200
+          border-0
+        "
+      >
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <h6 class="text-blueGray-500 text-sm font-bold">Sign in with</h6>
+            <p class="text-green-600 text-md" v-if="authStore.status">{{ authStore.status }}</p>
+          </div>
+          <div class="btn-wrapper text-center">
+            <button
+              class="
+                bg-white
+                active:bg-blueGray-50
+                text-blueGray-700
+                font-normal
+                px-4
+                py-2
+                rounded
+                outline-none
+                focus:outline-none
+                mr-2
+                mb-1
+                uppercase
+                shadow
+                hover:shadow-md
+                inline-flex
+                items-center
+                font-bold
+                text-xs
+                ease-linear
+                transition-all
+                duration-150
+              "
+              type="button"
+            >
+              <img
+                alt="..."
+                class="w-5 mr-1"
+                src="https://demos.creative-tim.com/notus-js/assets/img/github.svg"
+              />Github
+            </button>
+            <button
+              class="
+                bg-white
+                active:bg-blueGray-50
+                text-blueGray-700
+                font-normal
+                px-4
+                py-2
+                rounded
+                outline-none
+                focus:outline-none
+                mr-1
+                mb-1
+                uppercase
+                shadow
+                hover:shadow-md
+                inline-flex
+                items-center
+                font-bold
+                text-xs
+                ease-linear
+                transition-all
+                duration-150
+              "
+              type="button"
+            >
+              <img
+                alt="..."
+                class="w-5 mr-1"
+                src="https://demos.creative-tim.com/notus-js/assets/img/google.svg"
+              />Google
+            </button>
+          </div>
+          <hr class="mt-6 border-b-1 border-blueGray-300" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="text-blueGray-400 text-center mb-3 font-bold">
+            <small>Or sign in with credentials</small>
+          </div>
+          <form @submit.prevent="authStore.handleLogin(form)">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="grid-password"
+                >Email</label
+              >
+              <input
+                v-model="form.email"
+                type="email"
+                class="
+                  border-0
+                  px-3
+                  py-3
+                  placeholder-blueGray-300
+                  text-blueGray-600
+                  bg-white
+                  rounded
+                  text-sm
+                  shadow
+                  focus:outline-none focus:ring
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                placeholder="Email"
+              />
+              <p class="text-red-400 text-sm" v-if="authStore.errors.email">
+                {{ authStore.errors.email[0] }}
+              </p>
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="grid-password"
+                >Password</label
+              ><input
+                v-model="form.password"
+                type="password"
+                class="
+                  border-0
+                  px-3
+                  py-3
+                  placeholder-blueGray-300
+                  text-blueGray-600
+                  bg-white
+                  rounded
+                  text-sm
+                  shadow
+                  focus:outline-none focus:ring
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                placeholder="Password"
+              /><p class="text-red-400 text-sm" v-if="authStore.errors.password">
+                {{ authStore.errors.password[0] }}
+              </p>
+              
+            </div>
+            <div class="flex justify-between">
+              <label class="inline-flex items-center cursor-pointer"
+                ><input
+                  id="customCheckLogin"
+                  type="checkbox"
+                  class="
+                    form-checkbox
+                    border-0
+                    rounded
+                    text-blueGray-700
+                    ml-1
+                    w-5
+                    h-5
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                /><span class="ml-2 text-sm font-semibold text-blueGray-600"
+                  >Remember me</span
+                ></label
+              >
+              <router-link
+                to="/forgot-password"
+                class="inline-flex items-center cursor-pointer underline"
+                ><span class="ml-2 text-sm font-semibold text-blueGray-600"
+                  >Forgot password</span
+              ></router-link>
+            </div>
+            <div class="text-center mt-6">
+              <button
+                class="
+                  bg-blueGray-800
+                  text-white
+                  active:bg-blueGray-600
+                  text-sm
+                  font-bold
+                  uppercase
+                  px-6
+                  py-3
+                  rounded
+                  shadow
+                  hover:shadow-lg
+                  outline-none
+                  focus:outline-none
+                  mr-1
+                  mb-1
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                type="submit"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="relative pt-8 pb-6 mt-2">
+      <div class="container mx-auto px-2">
+        <div
+          class="flex flex-wrap items-center md:justify-between justify-center"
+        >
+          <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+            <div class="text-sm text-blueGray-500 font-semibold py-1">
+              Made with
+              <a href="#" class="text-blueGray-500 hover:text-gray-800"
+                >Notus JS</a
+              >
+              by
+              <a href="#" class="text-blueGray-500 hover:text-blueGray-800">
+                Creative Tim</a
+              >.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+</template>
+
+<script setup>
+import { ref } from "@vue/reactivity";
+import { useAuthStore } from "../store/auth";
+
+const authStore = useAuthStore()
+
+const form = ref({
+  email: "",
+  password: "",
+});
+
+</script>
+
+<style>
+</style>
